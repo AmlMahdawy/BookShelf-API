@@ -7,6 +7,11 @@ const BookModel = require('../Models/BookModel');
 let GetUserById = async (userID) => {
     return await AuthModel.findOne({ _id: userID })
 }
+let GetUserByID = async (req,res,next) => {
+    let id=req.params.id
+ let user= await AuthModel.findOne({ _id: id })
+ res.send(user)
+}
 
 let GetUserData = async (req, res, next) => {
 
@@ -129,6 +134,7 @@ module.exports = {
     checkIfFavourite,
     getAllUser,
     favNumbers,
-    getAllFavs
+    getAllFavs,
+    GetUserByID
 }
 
